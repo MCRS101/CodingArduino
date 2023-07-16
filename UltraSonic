@@ -1,0 +1,25 @@
+const int pin = 8 ;
+long cal , cm ;
+void setup()
+{
+  Serial.begin(9600);
+}
+void loop()
+{
+ pinMode(pin,OUTPUT);
+  digitalWrite(pin,LOW);
+  delayMicroseconds(2);
+  digitalWrite(pin,HIGH);
+  delayMicroseconds(5);
+  digitalWrite(pin,LOW);
+  pinMode(pin,INPUT);
+  
+  cal = pulseIn(pin,HIGH);
+  
+  cm = cal / 58;
+  delay(200);
+  Serial.print("Distance: ");
+  Serial.print(cm);
+  Serial.print("CM.");
+  Serial.println();
+}
